@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:chat_stack/api/apis.dart';
@@ -23,6 +24,7 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   final _formkey = GlobalKey<FormState>();
+  String? _image;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -78,20 +80,34 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   // User profile picture
                   Stack(
                     children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(mq.height * .02),
-                        child: CachedNetworkImage(
-                          width: mq.height * .18,
-                          height: mq.height * .18,
-                          fit: BoxFit.fill,
-                          imageUrl: widget.user.image,
-                          // placeholder: (context, url) =>
-                          //     const CircleAvatar(child: Icon(CupertinoIcons.person)),
-                          errorWidget: (context, url, error) =>
-                              const CircleAvatar(
-                                  child: Icon(CupertinoIcons.person)),
-                        ),
-                      ),
+                      _image != null
+                          ?
+                          // Image from local storage
+                          ClipRRect(
+                              borderRadius:
+                                  BorderRadius.circular(mq.height * .02),
+                              child: Image.file(File(_image!),
+                                  width: mq.height * .18,
+                                  height: mq.height * .18,
+                                  fit: BoxFit.cover),
+                            )
+                          :
+                          // Image from server
+                          ClipRRect(
+                              borderRadius:
+                                  BorderRadius.circular(mq.height * .02),
+                              child: CachedNetworkImage(
+                                width: mq.height * .18,
+                                height: mq.height * .18,
+                                fit: BoxFit.fill,
+                                imageUrl: widget.user.image,
+                                // placeholder: (context, url) =>
+                                //     const CircleAvatar(child: Icon(CupertinoIcons.person)),
+                                errorWidget: (context, url, error) =>
+                                    const CircleAvatar(
+                                        child: Icon(CupertinoIcons.person)),
+                              ),
+                            ),
 
                       // edit button on top of profile picture
                       Positioned(
@@ -266,6 +282,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         if (image != null) {
                           log(' import Image path : ${image.path} -- Image mime type: ${image.mimeType}');
                           // For hiding bottom sheet
+                          _image = image.path;
                           Navigator.pop(context);
                         }
                       },
