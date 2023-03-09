@@ -45,6 +45,8 @@ dependencies:
   cloud_firestore: ^4.4.3
   # For showing network images
   cached_network_image: ^3.2.3
+  # For picking images
+  image_picker: ^0.8.6+4
 
 dev_dependencies:
   flutter_test:

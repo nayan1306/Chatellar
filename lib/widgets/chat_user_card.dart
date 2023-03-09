@@ -33,7 +33,7 @@ class _ChatUserCardState extends State<ChatUserCard> {
             //   foregroundColor: Color.fromARGB(255, 255, 255, 255),
             //   child: Icon(CupertinoIcons.person),
             leading: ClipRRect(
-              borderRadius: BorderRadius.circular(mq.height * .03),
+              borderRadius: BorderRadius.circular(mq.height * .01),
               child: CachedNetworkImage(
                 width: mq.height * .055,
                 height: mq.height * .055,
