@@ -259,8 +259,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       onPressed: () async {
                         // Capture a photo
                         final ImagePicker picker0 = ImagePicker();
-                        final XFile? photo =
-                            await picker0.pickImage(source: ImageSource.camera);
+                        final XFile? photo = await picker0.pickImage(
+                            source: ImageSource.camera, imageQuality: 100);
+                        if (photo != null) {
+                          // For hiding bottom sheet
+                          _image = photo.path;
+                          APIs.updateProfilePicture(File(_image!));
+                          Navigator.pop(context);
+                        }
                       },
                       child: const Icon(
                         Icons.camera_alt_rounded,
@@ -276,13 +282,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       onPressed: () async {
                         final ImagePicker picker = ImagePicker();
                         // Pick an image
-                        final XFile? image =
-                            await picker.pickImage(source: ImageSource.gallery);
+                        final XFile? image = await picker.pickImage(
+                            source: ImageSource.gallery, imageQuality: 100);
 
                         if (image != null) {
                           log(' import Image path : ${image.path} -- Image mime type: ${image.mimeType}');
                           // For hiding bottom sheet
                           _image = image.path;
+                          APIs.updateProfilePicture(File(_image!));
                           Navigator.pop(context);
                         }
                       },
