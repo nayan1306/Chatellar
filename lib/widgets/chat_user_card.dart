@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../main.dart';
+import '../screens/chat_screen.dart';
 
 class ChatUserCard extends StatefulWidget {
   final ChatUser user;
@@ -26,7 +27,10 @@ class _ChatUserCardState extends State<ChatUserCard> {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(11)),
       color: const Color.fromARGB(255, 202, 251, 255),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (_) => ChatScreen(user: widget.user)));
+        },
         child: ListTile(
             //const CircleAvatar(
             //   backgroundColor: Color.fromARGB(255, 0, 167, 170),

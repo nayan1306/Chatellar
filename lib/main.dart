@@ -10,9 +10,8 @@ import 'package:flutter/services.dart';
 late Size mq;
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
-  // WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
   _initializeFirebase();
   runApp(const MyApp());
 }

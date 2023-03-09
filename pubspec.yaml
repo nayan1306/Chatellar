@@ -47,8 +47,25 @@ dependencies:
   cached_network_image: ^3.2.3
   # For picking images
   image_picker: ^0.8.6+4
-  # For acccessing firebase storage for uploading files
-  firebase_storage: ^11.0.15
+  
+  # For accessing Firebase Storage (for uploading files)
+  firebase_storage: ^11.0.6
+
+  # For showing Emojis
+  emoji_picker_flutter: ^1.5.1
+
+  # For accessing firebase messaging (Push Notification)
+  firebase_messaging: ^14.2.0
+
+  # For calling RestAPIs
+  http: ^0.13.5
+
+  # For creating notification channel
+  flutter_notification_channel: ^2.0.0
+
+  # For storing images into gallery
+  gallery_saver: ^2.3.2
+
 
 dev_dependencies:
   flutter_test:

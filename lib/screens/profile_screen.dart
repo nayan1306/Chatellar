@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:chat_stack/api/apis.dart';
-import 'package:chat_stack/helper/dialogues.dart';
+import 'package:chat_stack/helper/dialogs.dart';
 import 'package:chat_stack/screens/auth/Login_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
