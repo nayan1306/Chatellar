@@ -1,6 +1,6 @@
 # chat_stack
 
-A new Flutter project.
+A chat application
 
 ## Getting Started
 
