@@ -113,6 +113,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   icon: const Icon(Icons.more_vert_outlined)),
             ],
           ),
+
+          // Background color
+          backgroundColor: Colors.transparent,
           floatingActionButton: Padding(
             padding: const EdgeInsets.only(right: 150, bottom: 20),
             child: FloatingActionButton(

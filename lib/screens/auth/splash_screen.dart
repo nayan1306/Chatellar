@@ -40,13 +40,21 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     mq = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: Colors.black,
       body: Stack(
         children: [
           Positioned(
               width: mq.width * .5,
               top: mq.height * .15,
-              left: mq.width * .21,
-              child: Image.asset('images/login_Icon.png')),
+              left: mq.width * .24,
+              child: Transform.scale(
+                scale: 1.5,
+                child: Image.asset(
+                  'images/coverV4.png',
+                  width: 400,
+                  height: 400,
+                ),
+              )),
           Positioned(
               bottom: mq.height * .12,
               width: mq.width * .9,
@@ -65,7 +73,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 "Created by : Nayan Verma",
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: Color.fromARGB(99, 0, 0, 0),
+                  color: Color.fromARGB(255, 168, 168, 168),
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),
