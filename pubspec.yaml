@@ -66,6 +66,14 @@ dependencies:
   # For storing images into gallery
   gallery_saver: ^2.3.2
 
+  # For confetti widget
+  confetti: ^0.7.0
+
+  # For hidden drawer menu
+  hidden_drawer_menu: ^3.0.1
+  
+  dio: ^5.0.2
+
 
 dev_dependencies:
   flutter_test:

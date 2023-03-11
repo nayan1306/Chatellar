@@ -129,6 +129,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.17.0"
+  confetti:
+    dependency: "direct main"
+    description:
+      name: confetti
+      sha256: "979aafde2428c53947892c95eb244466c109c129b7eee9011f0a66caaca52267"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.7.0"
   convert:
     dependency: transitive
     description:
@@ -161,6 +169,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.5"
+  dio:
+    dependency: "direct main"
+    description:
+      name: dio
+      sha256: "2644a9e0965a7aa3deb09cb8ce4081db4450c178f472818c8cd34216a3070d7b"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.0.2"
   emoji_picker_flutter:
     dependency: "direct main"
     description:
@@ -408,6 +424,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.11.0+1"
+  hidden_drawer_menu:
+    dependency: "direct main"
+    description:
+      name: hidden_drawer_menu
+      sha256: "74ca9c4ffc45c05dec3fd4e12cd6bd0851029d909ee5531bf31244b7160f96b9"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.1"
   http:
     dependency: "direct main"
     description:
