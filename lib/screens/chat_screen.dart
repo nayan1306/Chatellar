@@ -96,7 +96,10 @@ class _ChatScreenState extends State<ChatScreen> {
                           } else {
                             return const Center(
                               child: Text('Say Hii! 👋',
-                                  style: TextStyle(fontSize: 20)),
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      color:
+                                          Color.fromARGB(255, 202, 201, 201))),
                             );
                           }
                       }

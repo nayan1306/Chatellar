@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
@@ -26,7 +28,7 @@ class _SentimentScreenState extends State<SentimentScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 196, 175, 219),
+      backgroundColor: const Color.fromARGB(255, 29, 28, 28),
       appBar: AppBar(
         title: const Text('Sentiment Analyzer'),
       ),
@@ -36,7 +38,7 @@ class _SentimentScreenState extends State<SentimentScreen> {
           children: [
             const Text(
               'Enter some text to analyze:',
-              style: TextStyle(fontSize: 20.0),
+              style: TextStyle(fontSize: 20.0, color: Colors.white70),
             ),
             Padding(
               padding: const EdgeInsets.all(16.0),
@@ -44,7 +46,16 @@ class _SentimentScreenState extends State<SentimentScreen> {
                 controller: _textController,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: 'Enter text',
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color.fromARGB(255, 90, 255, 95),
+                      width: 2, // set focused border color to green
+                    ),
+                  ),
+                  hintText: 'Enter Text',
+                  filled: true,
+                  fillColor: Color.fromARGB(
+                      255, 121, 121, 121), // set background color to white
                 ),
                 maxLines: null,
               ),
@@ -53,7 +64,7 @@ class _SentimentScreenState extends State<SentimentScreen> {
               onPressed: () async {
                 // Call the sentiment analysis API with the input text
                 final response = await Dio().post(
-                  'https://api-inference.huggingface.co/models/finiteautomata/bertweet-base-sentiment-analysis',
+                  "https://api-inference.huggingface.co/models/j-hartmann/emotion-english-distilroberta-base",
                   data: {'inputs': _textController.text},
                   options: Options(
                     headers: {
@@ -67,15 +78,15 @@ class _SentimentScreenState extends State<SentimentScreen> {
                 // Get the sentiment score and label from the response
                 final sentimentList = response.data[0];
 
-                final negScore = sentimentList[0]['score'];
-                final neuScore = sentimentList[1]['score'];
-                final posScore = sentimentList[2]['score'];
-                // final posScore = sentimentList[2]['score'];
+                log('Sentiment list: $response');
 
-                var sentimentScore = -(posScore - negScore);
+                var outScore = sentimentList[0]['score'];
+                // var posScore = sentimentList[1]['score'];
 
-                final sentimentLabel =
-                    sentimentScore < 1 ? 'POSITIVE' : 'NEGATIVE';
+                var sentimentScore = outScore; //-(posScore - negScore);
+
+                final sentimentLabel = sentimentList[0]['label'];
+                // sentimentScore < 1 ? 'POSITIVE' : 'NEGATIVE';
 
                 // Update the UI with the sentiment score and label
                 setState(() {
@@ -83,18 +94,38 @@ class _SentimentScreenState extends State<SentimentScreen> {
                   _sentimentLabel = sentimentLabel;
                 });
               },
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                  (Set<MaterialState> states) {
+                    if (states.contains(MaterialState.pressed)) {
+                      return const Color.fromARGB(
+                          255, 200, 233, 202); // color when pressed
+                    } else if (states.contains(MaterialState.hovered)) {
+                      return const Color.fromARGB(
+                          255, 69, 180, 197); // color when hovered
+                    } else {
+                      return const Color.fromARGB(
+                          255, 76, 153, 175); // default color
+                    }
+                  },
+                ),
+                // You can customize other properties of the button style here
+                // such as elevation, shape, padding, textStyle, etc.
+              ),
               child: const Text('Analyze'),
             ),
             const SizedBox(height: 16.0),
-            if (_sentimentScore != 0.0)
-              Text(
-                'Sentiment score: ${_sentimentScore.toStringAsFixed(2)}',
-                style: const TextStyle(fontSize: 20.0),
-              ),
             if (_sentimentLabel.isNotEmpty)
               Text(
                 'Sentiment label: $_sentimentLabel',
-                style: const TextStyle(fontSize: 20.0),
+                style: const TextStyle(
+                    fontSize: 20.0, color: Color.fromARGB(255, 182, 214, 237)),
+              ),
+            if (_sentimentScore != 0.0)
+              Text(
+                'Sentiment score: ${_sentimentScore.toStringAsFixed(2)}',
+                style: const TextStyle(
+                    fontSize: 20.0, color: Color.fromARGB(255, 235, 203, 203)),
               ),
           ],
         ),

@@ -39,20 +39,24 @@ class _MessageCardState extends State<MessageCard> {
     }
 
     return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
         // For adding some height
-        SizedBox(height: mq.height * .04),
+        SizedBox(height: mq.height * .020),
 
         // message content
         Flexible(
           child: Container(
             padding: EdgeInsets.all(widget.message.type == Type.image
                 ? mq.width * .03
-                : mq.width * .04),
-            margin: EdgeInsets.symmetric(
-                horizontal: mq.width * .04, vertical: mq.height * .01),
+                : mq.width * .03),
+            margin: EdgeInsets.only(
+                right: mq.width * .16,
+                top: mq.height * .005,
+                left: mq.width * .04,
+                bottom: mq.height * .005),
             decoration: BoxDecoration(
                 color: const Color.fromARGB(169, 11, 11, 11),
                 border: Border.all(
@@ -102,74 +106,6 @@ class _MessageCardState extends State<MessageCard> {
     );
   }
 
-  // sender or another user message
-  // Widget _blueMessage() {
-  //   //update last read message if sender and receiver are different
-  //   if (widget.message.read.isEmpty) {
-  //     APIs.updateMessageReadStatus(widget.message);
-  //   }
-
-  //   return Row(
-  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  //     children: [
-  //       //message content
-  //       Flexible(
-  //         child: Container(
-  //           padding: EdgeInsets.all(widget.message.type == Type.image
-  //               ? mq.width * .03
-  //               : mq.width * .04),
-  //           margin: EdgeInsets.symmetric(
-  //               horizontal: mq.width * .04, vertical: mq.height * .01),
-  //           decoration: BoxDecoration(
-  //               color: const Color.fromARGB(169, 11, 11, 11),
-  //               border: Border.all(
-  //                   color: const Color.fromARGB(255, 1, 195, 238), width: 2),
-  //               //making borders curved
-  //               borderRadius: const BorderRadius.only(
-  //                   topLeft: Radius.circular(30),
-  //                   topRight: Radius.circular(30),
-  //                   bottomRight: Radius.circular(30))),
-  //           child: widget.message.type == Type.text
-  //               ?
-  //               //show text
-  //               Text(
-  //                   widget.message.msg,
-  //                   style: const TextStyle(
-  //                       fontSize: 15,
-  //                       color: Color.fromARGB(221, 255, 255, 255)),
-  //                 )
-  //               :
-  //               //show image
-  //               ClipRRect(
-  //                   borderRadius: BorderRadius.circular(15),
-  //                   child: CachedNetworkImage(
-  //                     imageUrl: widget.message.msg,
-  //                     placeholder: (context, url) => const Padding(
-  //                       padding: EdgeInsets.all(8.0),
-  //                       child: CircularProgressIndicator(strokeWidth: 2),
-  //                     ),
-  //                     errorWidget: (context, url, error) =>
-  //                         const Icon(Icons.image, size: 70),
-  //                   ),
-  //                 ),
-  //         ),
-
-  //       ),
-
-  //       //message time
-  //       Padding(
-  //         padding: EdgeInsets.only(right: mq.width * .04),
-  //         child: Text(
-  //           MyDateUtil.getFormattedTime(
-  //               context: context, time: widget.message.sent),
-  //           style: const TextStyle(
-  //               fontSize: 13, color: Color.fromARGB(233, 165, 164, 164)),
-  //         ),
-  //       ),
-  //     ],
-  //   );
-  // }
-
   // our or user message
   Widget _greenMessage() {
     return Column(
@@ -179,7 +115,7 @@ class _MessageCardState extends State<MessageCard> {
       // textDirection: TextDirection.rtl,
       children: [
         // For adding some height
-        SizedBox(height: mq.height * .04),
+        SizedBox(height: mq.height * .03),
 
         //message content
         Flexible(
@@ -187,8 +123,11 @@ class _MessageCardState extends State<MessageCard> {
             padding: EdgeInsets.all(widget.message.type == Type.image
                 ? mq.width * .03
                 : mq.width * .04),
-            margin: EdgeInsets.symmetric(
-                horizontal: mq.width * .04, vertical: mq.height * .01),
+            margin: EdgeInsets.only(
+                right: mq.width * .04,
+                top: mq.height * .005,
+                left: mq.width * .16,
+                bottom: mq.height * .005),
             decoration: BoxDecoration(
                 color: const Color.fromARGB(169, 0, 0, 0),
                 border: Border.all(color: Colors.lightGreen),
@@ -225,7 +164,9 @@ class _MessageCardState extends State<MessageCard> {
 
         //message time
         Padding(
-          padding: EdgeInsets.only(left: mq.width * .77),
+          padding: EdgeInsets.only(
+            left: mq.width * .77,
+          ),
           child: Row(
             children: [
               //for adding some space
