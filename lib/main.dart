@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
             fontWeight: FontWeight.bold,
             fontSize: 25,
           ),
-          backgroundColor: Color.fromARGB(255, 2, 90, 127),
+          backgroundColor: Color.fromARGB(255, 6, 76, 106),
         )),
         home: const SplashScreen());
     // home: const MyHomePage(title: 'Flutter Demo Home Page'),
