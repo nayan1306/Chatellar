@@ -4,3 +4,7 @@ It uses Firebase Cloud Firestore as well as the Firebase authentication package 
 
 <img src="https://user-images.githubusercontent.com/105338541/226241280-875098ef-64fc-429f-9f32-3842e8b467ff.png" width="20%">
 
+
+
+https://user-images.githubusercontent.com/105338541/233816677-9e546c15-e58e-4360-a8e2-79fb64572b27.mp4
+
